@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chợ Skill — HomeTechVN</title>
+<meta name="description" content="Chợ Skill — kho skill AI dùng chung, ai cũng xem được, ai cũng đóng góp được. Đồng bộ từ Chợ Skill của HomeTechVN.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>Chợ Skill <span>— HomeTechVN</span></h1>
+    <p class="intro">Kho skill AI dùng chung: kỹ năng cho trợ lý AI, mẫu prompt, quy trình làm việc — ai cũng vào xem được, ai cũng đóng góp được.</p>
+    <p class="stats" id="stats">Đang tải dữ liệu…</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="toolbar" aria-label="Tìm kiếm và lọc">
+    <input id="search" type="search" placeholder="Tìm skill theo tên, từ khóa, mô tả…" autocomplete="off">
+    <div class="filters">
+      <label>Nhóm
+        <select id="filter-group"><option value="">Tất cả nhóm</option></select>
+      </label>
+      <label>Vùng
+        <select id="filter-region"><option value="">Tất cả vùng</option></select>
+      </label>
+      <label>Trạng thái
+        <select id="filter-status">
+          <option value="">Tất cả</option>
+          <option value="live" selected>Đang có</option>
+          <option value="archived">Lưu trữ</option>
+        </select>
+      </label>
+      <label>Sắp xếp
+        <select id="sort">
+          <option value="name">Tên A → Z</option>
+          <option value="uses">Lượt dùng nhiều nhất</option>
+        </select>
+      </label>
+    </div>
+    <p class="result-count" id="result-count"></p>
+  </section>
+
+  <section class="grid" id="grid" aria-live="polite"></section>
+
+  <section class="contribute" id="dong-gop">
+    <h2>Đóng góp skill</h2>
+    <p>Mọi đóng góp đều được xem xét trước khi vào chợ. Có 2 cách:</p>
+    <h3>Cách 1 — Gửi đề xuất (không cần biết code)</h3>
+    <p>Điền form dưới đây rồi bấm gửi — trình duyệt sẽ mở sẵn một GitHub issue mới trong repo <code>moshap154/skill-market</code> với nội dung bạn đã điền.</p>
+    <form id="issue-form">
+      <label>Tên skill
+        <input id="f-name" type="text" required maxlength="120" placeholder="Ví dụ: Viết bài Facebook cho shop">
+      </label>
+      <label>Mô tả ngắn (skill này làm gì, dùng khi nào)
+        <textarea id="f-desc" rows="3" required maxlength="1000" placeholder="Mô tả ngắn gọn…"></textarea>
+      </label>
+      <label>Link nguồn (nếu có)
+        <input id="f-source" type="url" maxlength="500" placeholder="https://github.com/…">
+      </label>
+      <label>Nhóm đề xuất
+        <select id="f-group">
+          <option>Kỹ thuật &amp; Code</option>
+          <option>Dữ liệu &amp; Phân tích</option>
+          <option>Nội dung &amp; Viết lách</option>
+          <option>Sáng tạo &amp; Media</option>
+          <option>Kinh doanh &amp; Marketing</option>
+          <option>Năng suất &amp; Tổ chức</option>
+          <option>Tự động hoá ứng dụng</option>
+          <option>Tài liệu &amp; Hồ sơ</option>
+          <option>Đời sống &amp; Hỗ trợ</option>
+        </select>
+      </label>
+      <button type="submit" class="btn">Mở GitHub issue để gửi đề xuất</button>
+    </form>
+    <h3>Cách 2 — Gửi pull request (cho người quen GitHub)</h3>
+    <ol>
+      <li>Fork repo <a href="https://github.com/moshap154/skill-market" target="_blank" rel="noopener">moshap154/skill-market</a>.</li>
+      <li>Thêm hoặc sửa file <code>skills/&lt;slug&gt;/SKILL.md</code> theo đúng định dạng mẫu (frontmatter + các mục Công việc, Mô tả, Điểm mạnh, Từ khóa, Đầu vào, Đầu ra, Giới hạn).</li>
+      <li>Mở pull request, ghi rõ skill này làm gì. Quản trị viên sẽ xem xét rồi mới đưa vào chợ.</li>
+    </ol>
+    <p class="note">Lưu ý: đóng góp phải là nội dung hợp pháp, không chứa mã độc, không vi phạm bản quyền của người khác.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Dữ liệu đồng bộ từ Chợ Skill • Cập nhật <span id="updated-at">…</span></p>
+    <p>HomeTechVN — Nhà là nơi để trở về</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Đóng">✕</button>
+    <div id="modal-content">Đang tải…</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

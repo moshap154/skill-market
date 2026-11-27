@@ -1,0 +1,141 @@
+/* Chợ Skill — HomeTechVN. Tông xanh rừng #0B3D2C + vàng hổ phách #F5A623.
+   Thuần CSS, không phụ thuộc ngoài. Mobile-first. */
+:root {
+  --forest: #0b3d2c;
+  --forest-deep: #072a1e;
+  --amber: #f5a623;
+  --amber-soft: #fdf3dd;
+  --ink: #1c2420;
+  --muted: #5c6b64;
+  --line: #dde5df;
+  --bg: #f6f8f6;
+  --card: #ffffff;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+a { color: var(--forest); }
+code {
+  background: #eef2ee; padding: 1px 5px; border-radius: 4px;
+  font-size: .9em; word-break: break-all;
+}
+
+/* Đầu trang */
+.site-header { background: var(--forest); color: #fff; padding: 28px 0 20px; }
+.site-header h1 { margin: 0 0 6px; font-size: 1.7rem; line-height: 1.25; }
+.site-header h1 span { color: var(--amber); font-size: 1.05rem; font-weight: 600; }
+.site-header .intro { margin: 0 0 10px; color: #d7e6dc; max-width: 640px; }
+.site-header .stats { margin: 0; color: var(--amber); font-weight: 600; }
+
+/* Thanh công cụ */
+.toolbar { margin: 18px 0 6px; }
+.toolbar input[type="search"] {
+  width: 100%; padding: 12px 14px; font-size: 1rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--card);
+}
+.filters {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
+}
+.filters label { font-size: .85rem; color: var(--muted); display: block; }
+.filters select {
+  width: 100%; margin-top: 4px; padding: 9px 8px; font-size: .95rem;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+}
+.result-count { color: var(--muted); font-size: .9rem; margin: 10px 0 0; }
+
+/* Lưới thẻ */
+.grid {
+  display: grid; grid-template-columns: 1fr; gap: 12px; margin: 14px 0 28px;
+}
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 14px 16px; cursor: pointer;
+  text-align: left; font: inherit; color: inherit; display: block; width: 100%;
+}
+.card:hover, .card:focus-visible { border-color: var(--amber); outline: 2px solid var(--amber); outline-offset: 1px; }
+.card h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--forest); }
+.card .meta { margin: 0 0 8px; font-size: .85rem; color: var(--muted); }
+.card ul { margin: 0 0 8px; padding-left: 18px; }
+.card ul li { margin-bottom: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: var(--amber-soft); border: 1px solid #f0d9a0; color: #7a5a10;
+  border-radius: 999px; padding: 2px 9px; font-size: .78rem;
+}
+.chip.region { background: #e7f0ea; border-color: #bcd4c3; color: var(--forest); }
+.chip.archived { background: #f0ecec; border-color: #d8c9c9; color: #7a4a4a; }
+.card .uses { font-size: .8rem; color: var(--muted); margin: 8px 0 0; }
+
+/* Đóng góp */
+.contribute {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px; margin-bottom: 28px;
+}
+.contribute h2 { color: var(--forest); margin: 0 0 8px; }
+.contribute h3 { margin: 18px 0 6px; font-size: 1rem; }
+.contribute form label { display: block; margin-bottom: 10px; font-size: .9rem; }
+.contribute form input, .contribute form textarea, .contribute form select {
+  width: 100%; margin-top: 4px; padding: 10px; font-size: .95rem; font-family: inherit;
+  border: 1px solid var(--line); border-radius: 8px; background: #fff;
+}
+.btn {
+  background: var(--amber); color: var(--forest-deep); border: none;
+  padding: 12px 18px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; width: 100%;
+}
+.btn:hover { filter: brightness(.95); }
+.contribute .note { font-size: .88rem; color: var(--muted); }
+
+/* Chân trang */
+.site-footer { background: var(--forest-deep); color: #cfe0d5; padding: 18px 0; }
+.site-footer p { margin: 2px 0; font-size: .9rem; }
+
+/* Modal chi tiết */
+.modal { position: fixed; inset: 0; z-index: 50; }
+.modal[hidden] { display: none; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .55); }
+.modal-box {
+  position: relative; background: #fff; max-width: 720px; margin: 4vh auto;
+  max-height: 92vh; overflow-y: auto; border-radius: 14px; padding: 22px 20px 28px;
+}
+.modal-close {
+  position: sticky; top: 0; float: right; background: var(--forest); color: #fff;
+  border: none; border-radius: 50%; width: 34px; height: 34px; font-size: 1rem;
+  cursor: pointer; z-index: 2;
+}
+.modal-box h1 { color: var(--forest); margin: 0 0 6px; font-size: 1.4rem; padding-right: 40px; }
+.modal-box h2 { color: var(--forest); margin: 20px 0 6px; font-size: 1.1rem; }
+.modal-box h3 { margin: 14px 0 4px; font-size: 1rem; }
+.modal-box p { margin: 0 0 10px; }
+.modal-box ul, .modal-box ol { margin: 0 0 10px; padding-left: 22px; }
+.modal-box li { margin-bottom: 3px; }
+.modal-box pre {
+  background: #f2f4f2; padding: 10px; border-radius: 8px; overflow-x: auto;
+}
+.modal-box pre code { background: none; padding: 0; }
+.modal-box a { word-break: break-all; }
+.detail-meta { font-size: .88rem; color: var(--muted); margin-bottom: 12px; }
+.detail-note {
+  background: var(--amber-soft); border: 1px solid #f0d9a0; border-radius: 8px;
+  padding: 8px 12px; font-size: .9rem; margin: 12px 0;
+}
+.detail-source { font-size: .9rem; margin-top: 14px; }
+
+/* Màn hình lớn */
+@media (min-width: 640px) {
+  .filters { grid-template-columns: repeat(4, 1fr); }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .site-header h1 { font-size: 2.1rem; }
+}
+@media (min-width: 960px) {
+  .grid { grid-template-columns: 1fr 1fr 1fr; }
+  .btn { width: auto; }
+}
