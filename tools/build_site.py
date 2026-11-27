@@ -123,13 +123,24 @@ def main():
         json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
     # Copy SKILL.md + source.md (chỉ file .md) sang site để trang chi tiết tải được.
+    # GitHub secret scanning chặn push nếu file chứa URL webhook mẫu đúng định dạng
+    # secret (vd skill hunted-trendradar có ví dụ Slack webhook giả). Ghi đè bằng
+    # placeholder khi copy sang site; bản gốc trong kho export giữ nguyên.
+    # LƯU Ý: không được ghi URL giả nguyên văn vào đây — chính nó cũng bị chặn
+    # khi push file này lên GitHub; dùng regex khớp dạng URL thay vì chuỗi cụ thể.
+    slack_webhook_re = re.compile(
+        r"https://hooks\.slack\.com/services/T[0-9A-Z]+/B[0-9A-Z]+/[A-Za-z0-9]+")
+    slack_webhook_placeholder = (
+        "https://hooks.slack.com/services/<team-id>/<app-id>/<webhook-token>")
     copied = 0
     for sub in ("skills", "archived"):
         for src_file in sorted((SRC / sub).rglob("*.md")):
             rel = src_file.relative_to(SRC)
             dst = OUT / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(src_file, dst)
+            text = src_file.read_text(encoding="utf-8")
+            text = slack_webhook_re.sub(slack_webhook_placeholder, text)
+            dst.write_text(text, encoding="utf-8")
             copied += 1
 
     live_n = sum(1 for r in records if r["status"] == "live")

@@ -1,6 +1,6 @@
 ---
 name: "HAANH VM Monitor"
-description: "Hệ thống giám sát máy ảo cá nhân (Ubuntu, VM chỉ gọi ra ngoài): collector Python stdlib-only lấy số liệu thật từ /proc mỗi 2 giây, dashboard local + Space xem được trên điện thoại. Giám sát CPU/RAM/sw…"
+description: "Hệ thống giám sát máy ảo cá nhân (Ubuntu, VM Muse): collector Python stdlib-only lấy số liệu thật từ /proc mỗi 2 giây, dashboard local + Space xem được trên điện thoại. Giám sát CPU/RAM/swap/ổ đĩa/mạn…"
 group: "Kỹ thuật & Code"
 field: "Bảo mật & Hệ thống"
 job: "Giám sát máy ảo realtime, dọn dẹp an toàn, quản lý file và kiểm tra bảo mật & vá lỗi"
@@ -22,7 +22,7 @@ Giám sát máy ảo realtime, dọn dẹp an toàn, quản lý file và kiểm 
 
 ## Mô tả
 
-Hệ thống giám sát máy ảo cá nhân (Ubuntu, VM chỉ gọi ra ngoài): collector Python stdlib-only lấy số liệu thật từ /proc mỗi 2 giây, dashboard local + Space xem được trên điện thoại. Giám sát CPU/RAM/swap/ổ đĩa/mạng, quản lý tác vụ, AI-Boot dọn dẹp theo kiểu quét trước — chạy sau, quản lý file có 5 lớp chống lỗi, kiểm tra bảo mật & vá lỗi (gói vá, cổng nghe, SSH, quyền ~/.ssh, an toàn dữ liệu). Tự sống qua thay máy ảo nhờ ghi đĩa mỗi 10 giây, snapshot mỗi 5 phút, backup mỗi giờ và keepalive mỗi 15 phút. RAM là nút thắt số 1, CPU và ổ đĩa nhàn.
+Hệ thống giám sát máy ảo cá nhân (Ubuntu, VM Muse): collector Python stdlib-only lấy số liệu thật từ /proc mỗi 2 giây, dashboard local + Space xem được trên điện thoại. Giám sát CPU/RAM/swap/ổ đĩa/mạng, quản lý tác vụ, AI-Boot dọn dẹp theo kiểu quét trước — chạy sau, quản lý file có 5 lớp chống lỗi, kiểm tra bảo mật & vá lỗi (gói vá, cổng nghe, SSH, quyền ~/.ssh, an toàn dữ liệu). Tự sống qua thay máy ảo nhờ ghi đĩa mỗi 10 giây, snapshot mỗi 5 phút, backup mỗi giờ và keepalive mỗi 15 phút. RAM là nút thắt số 1, CPU và ổ đĩa nhàn.
 
 ## Điểm mạnh
 
